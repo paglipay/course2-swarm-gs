@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 Vagrant.configure('2') do |config|
-  config.vm.box = 'ubuntu/hirsute64'
+  config.vm.box = 'ubuntu/bionic64'
 
   # define manager nodes
   (1..3).each do |number|
@@ -36,8 +36,9 @@ Vagrant.configure('2') do |config|
   # tweak vm settings to optimize for your machine:
   config.vm.provider 'virtualbox' do |vb|
     # nest inside loops above for targeting mX and wX nodes or use conditionals to one off set values like the provisioner scripts
-    vb.memory = '4096'
+    vb.memory = '2048'
     vb.cpus = 2
+    vb.linked_clone = true
   end
   
   # install docker:
